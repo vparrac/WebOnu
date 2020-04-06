@@ -1,6 +1,8 @@
 # Covid-19Symtoms
-This application allows moderate the principal activities doing in Model United Nations in schools and universities
-TODO: INSERTAR PANTALLAZO
+
+This application allows start a patient's medical history
+![ezgif-3-a7db9bc9e74f](https://user-images.githubusercontent.com/32238112/78615200-6f5aa500-7836-11ea-810a-8fd77387d8bb.gif)
+
 ## Running the website
 Since this application is not a static application, you should have some thinks to do before you can start.
 ### Requirements
