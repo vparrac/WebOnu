@@ -21,6 +21,36 @@ You need to create three environments variables to this project
 - `SECRET_OR_KEY=<secretWord>`: Where secretWord is a String o code that you must save in secret.
 ### Requirements
 On the root folder of the proyect
+
+```bash
+
+# Run mongodb
+mongodb
+
+# Install dependencies for client
+yarn run client-install
+
+# Install dependencies for server
+yarn install
+
+# Run the client & server with concurrently
+yarn run dev
+
+# Run the Express server only
+yarn start
+
+# Run the server with nodemon
+yarn run server
+
+# Run the React client only
+yarn run client
+
+# Server runs on http://localhost:3001 and client on http://localhost:3000
+```
+
+<hr>
+
+
 ## Author
 Mateo León Alzate & Valerie Parra Cortés
 ## Link
