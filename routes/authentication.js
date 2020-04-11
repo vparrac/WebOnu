@@ -16,38 +16,30 @@ const passport = require("passport");
  * Método para crear un usuario
  */
 
-router.post(
-  "/signup",
-  passport.authenticate("local-signup", {
-    successRedirect: "/authentication/signin",
-    failureRedirect: "/authentication/signup",
-    passReqToCallback: true,
-  })
-);
-
-/**
- * Método para inciar sesión
- */
-// router.post(
-//   "/signin",
-//   passport.authenticate("local-signin", {
-//     successRedirect: "/",
-//     failureRedirect: "/authentication/signin",
-//     passReqToCallback: true,
-//   })
-// );
+router.post("/signup", (req, res, next) => {
+  passport.authenticate("local-signup", function (err, user, info) {
+    console.log(info);
+    if (user === false) {
+      res.statusMessage = info.mensaje;
+      res.status(400).end();
+    }
+    else{
+      res.statusMessage = "Registro creado con éxito";
+      res.status(200).end();
+    }
+  })(req, res, next);
+});
 
 router.post("/singin", (req, res, next) => {
-  passport.authenticate("local-signin", function (err, user, info) {
-    console.log(req.body);
-    console.log("Err",err);
-    console.log("Usr",user);
-    console.log("Info",info);
-    if (user===false) {
+  passport.authenticate("local-signin", function (err, user) {
+    if (user === false) {
       res.statusMessage = "Usuario o contraseña incorrectos";
       res.status(400).end();
     }
-    return res.json({ hola: "hola" });
+    else{
+      res.statusMessage = "Ingreso éxitoso";
+      res.status(200).end();
+    }
   })(req, res, next);
 });
 

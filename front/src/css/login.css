@@ -18,6 +18,14 @@
   border-color: black;
 }
 
+.mss {
+  height: 150px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  width: 600px;
+  border-color: black;
+}
+
 .cardR {
   height: 860px;
   margin-top: auto;

@@ -6,13 +6,10 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Menu from "./components/Menu";
-
+import RegisterComplete from "./components/RegisterComplete";
 function App() {
-
   const [user, setUser] = useState(null);
-  useEffect(() => {
-    
-  }, [user]);
+  useEffect(() => {}, [user]);
   return (
     <Router>
       <Navbar></Navbar>
@@ -21,6 +18,11 @@ function App() {
       <Route path="/login" exact component={Login}></Route>
       <Route path="/register" exact component={Register}></Route>
       <Route path="/menu" exact component={Menu}></Route>
+      <Route
+        path="/registerComplete"
+        exact
+        component={RegisterComplete}
+      ></Route>
       <Footer></Footer>
     </Router>
   );

@@ -1,9 +1,21 @@
 import React, { useRef, useState } from "react";
+import { Redirect } from 'react-router';
 // import PropTypes from 'prop-types';
 import "../css/login.css";
 const Register = () => {
   const [msg, setmsg] = useState("");
+  const [redirect, setredirect] = useState(false);
   const formRef = useRef();
+  const calcularEdad=(fecha)=> {
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+    return edad;
+}
   const onRegister = (evt) => {
     evt.preventDefault();
     const nombre = formRef.current.nombre.value;
@@ -12,15 +24,40 @@ const Register = () => {
     const tipoSangre = formRef.current.tipoSangre.value;
     const rh = formRef.current.rh.value;
     const nacimiento = formRef.current.nacimiento.value;
-    const password = formRef.current.password.password;
-    const confirmPassword = formRef.current.confirmPassword.password;
-    if (confirmPassword !== password) {
-      console.log("Do not match");
-      setmsg("Las contraseñas no coinciden");
-    }
+    const password = formRef.current.password.value;
+    const confirmPassword = formRef.current.confirmPassword.value;
+    const innerDate = new Date(nacimiento);
+    const now = new Date();
+    const edad = calcularEdad(innerDate);
+    
+    const usuario={ nombre, username, genero, tipoSangre, rh, nacimiento, password, edad };
 
-    console.log(formRef.current);
+    console.log(now);
+    if (confirmPassword !== password) {
+      setmsg("Las contraseñas no coinciden");
+    } else if (innerDate > now) {
+      setmsg("La fecha de nacimiento no puede ser posterior a la fecha actual");
+    } else {
+      fetch("http://localhost:3001/signup", {
+        method: "POST",
+        body: JSON.stringify(usuario),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((a) => {
+        console.log("llega front");
+        console.log(a);
+        if(a.status===200){
+          setredirect(true);
+        }
+      });
+    }
   };
+
+  if (redirect) {
+    return <Redirect to='/registerComplete'/>;
+  }
+
   return (
     <div>
       <div className="container">
@@ -97,8 +134,8 @@ const Register = () => {
                     <option defaultValue disabled>
                       Género
                     </option>
-                    <option value="1">Femenino</option>
-                    <option value="2">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
                   </select>
                 </div>
                 <label htmlFor="sangre">Tipo de sangre</label>
@@ -123,10 +160,10 @@ const Register = () => {
                     <option defaultValue disabled>
                       Tipo de sangre
                     </option>
-                    <option value="1">O</option>
-                    <option value="2">A</option>
-                    <option value="2">B</option>
-                    <option value="2">AB</option>
+                    <option value="O">O</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="AB">AB</option>
                   </select>
                 </div>
                 <label htmlFor="rh">Factor RH</label>

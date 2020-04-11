@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 // import PropTypes from 'prop-types';
+import { Redirect } from "react-router";
 import "../css/login.css";
 
 const Login = () => {
   const formRef = useRef();
   const [message, setMessage] = useState("");
+  const [redirect, setredirect] = useState(false);
   const onLogin = (evt) => {
     evt.preventDefault();
     const username = formRef.current.username.value;
@@ -22,9 +24,15 @@ const Login = () => {
       if (a.status === 400) {
         setMessage(a.statusText);
       }
+      if (a.status == 200) {
+        setredirect(true);
+      }
     });
   };
 
+  if (redirect) {
+    return <Redirect to="/menu" />;
+  }
   return (
     <div>
       <div className="container">
