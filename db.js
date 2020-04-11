@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { MongoClient, ObjectId } = require("mongodb");
 
 const MongoUtils = () => {
@@ -5,7 +6,7 @@ const MongoUtils = () => {
   const url = "mongodb://localhost:27017" || process.env.MONGODB_URI;
   let db;
   const dbName = "covidDB";
-  MongoClient.connect(url, { useUnifiedTopology: true }).then(client => {
+  MongoClient.connect(url, { useUnifiedTopology: true }).then((client) => {
     db = client.db(dbName);
   });
 
@@ -19,7 +20,7 @@ const MongoUtils = () => {
     return collection.insertMany(docs);
   };
 
-  MyMongoLib.getDocs = dbCollection => {
+  MyMongoLib.getDocs = (dbCollection) => {
     const collection = db.collection(dbCollection);
     return collection.find({}).toArray();
   };
@@ -30,8 +31,17 @@ const MongoUtils = () => {
       {
         _id: ObjectId(id),
       },
-      object,
+      object
     );
+  };
+
+  MyMongoLib.getLoginByUsername = (username) => {
+    const collection = db.collection("login");
+    return collection
+      .find({
+        username: username,
+      })
+      .toArray();
   };
 
   MyMongoLib.getWithJoin = (
@@ -40,7 +50,7 @@ const MongoUtils = () => {
     localField,
     foreingField,
     asName,
-    id,
+    id
   ) => {
     const collection = db.collection(dbcollection);
     return collection
@@ -65,8 +75,8 @@ const MongoUtils = () => {
         },
       ])
       .toArray();
-  };  
+  };
   return MyMongoLib;
 };
 
-module.exports =MongoUtils();
+module.exports = MongoUtils();

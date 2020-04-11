@@ -1,0 +1,32 @@
+.vertical-menu {
+    width: 20%;
+    font-family: "Gotu", sans-serif;
+    padding-left: 1%;
+    font-size: 110%;
+    float:left;
+  }
+  
+  .vertical-menu a {
+    background-color:white;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+  .vertical-menu .a {
+    background-color:white;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #6fe3e3;
+  }
+  
+  .vertical-menu a.active {
+    background-color: #09b3b3;
+    color: white;
+  }

@@ -5,9 +5,10 @@ const cookieParser = require('cookie-parser');
 const morgan  = require('morgan');
 const engine = require("ejs-mate");
 const indexRouter = require('./routes/index');
-const flash = require("connect-flash");
-const session = require("express-session");
-const bodyParser = require("body-parser");
+const cors = require('cors');
+const configurePassport= require('./passport/passport_config.js');
+const authenticationRouter = require('./routes/authentication')
+
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "public", "views"));
 
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 
 /**
@@ -28,7 +30,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+configurePassport(app);
+
 app.use('/', indexRouter);
+app.use('/', authenticationRouter)
 
 
 // // catch 404 and forward to error handler
@@ -46,5 +52,6 @@ app.use('/', indexRouter);
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
+
 
 module.exports = app;
