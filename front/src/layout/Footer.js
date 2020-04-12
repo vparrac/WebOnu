@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="footer">
         <hr></hr>
         <h4>Covid-19 Symtoms <br></br>

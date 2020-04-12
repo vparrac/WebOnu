@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Menu from "./components/Menu";
 import RegisterComplete from "./components/RegisterComplete";
 import { Redirect } from "react-router";
-import Ahogo from './components/Ahogo';
+
 
 const MyRouter = (props) => {
   const isAuthenticate=()=>{    
@@ -25,6 +25,8 @@ const MyRouter = (props) => {
   return true?<Route path="/menu" component={Menu}></Route>:
  <Redirect to="/login"></Redirect>
 };
+
+
 function App() {
 
  

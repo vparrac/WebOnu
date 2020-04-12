@@ -5,6 +5,10 @@ const cors = require("cors");
 const morgan = require("morgan");
 const engine = require("ejs-mate");
 const indexRouter = require("./routes/index");
+const registrarRouter = require("./routes/registrar")
+const flash = require("connect-flash");
+const session = require("express-session");
+const bodyParser = require("body-parser");
 
 const configurePassport = require("./passport/passport_config.js");
 const authenticationRouter = require("./routes/authentication");
@@ -29,6 +33,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 configurePassport(app);
+app.use('/', indexRouter);
+app.use('/registrar', registrarRouter);
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);

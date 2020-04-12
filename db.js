@@ -1,11 +1,11 @@
 require("dotenv").config();
-const { MongoClient, ObjectId } = require("mongodb");
+const { MongoClient, ObjectId } = require('mongodb');
 
 const MongoUtils = () => {
   const MyMongoLib = this || {};
-  const url = "mongodb://localhost:27017" || process.env.MONGODB_URI;
+  const url = 'mongodb://localhost:27017' || process.env.MONGODB_URI;
   let db;
-  const dbName = "covidDB";
+  const dbName = 'covidDB';
   MongoClient.connect(url, { useUnifiedTopology: true }).then((client) => {
     db = client.db(dbName);
   });
@@ -65,7 +65,7 @@ const MongoUtils = () => {
     return collection
       .aggregate([
         { $match: { _id: ObjectId(id) } },
-        { $unwind: "$" + localField },
+        { $unwind: '$' + localField },
         {
           $lookup: {
             from: fromCollection,
@@ -74,12 +74,12 @@ const MongoUtils = () => {
             as: asName,
           },
         },
-        { $unwind: "$" + asName },
+        { $unwind: '$' + asName },
         {
           $group: {
-            _id: "$_id",
-            revisiones_id: { $push: "$" + localField },
-            revisiones: { $push: "$" + asName },
+            _id: '$_id',
+            revisiones_id: { $push: '$' + localField },
+            revisiones: { $push: '$' + asName },
           },
         },
       ])

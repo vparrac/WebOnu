@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, Route } from "react-router-dom";
+import RegistrarFiebre from './RegistrarFiebre';
+import RegistrarFatiga from './RegistrarFatiga';
+import RegistrarTos from './RegistrarTos';
+import RegistrarDolor from './RegistrarDolor';
+import RegistrarCongestion from './RegistrarCongestion';
+import RegistrarDiarrea from './RegistrarDiarrea';
+import RegistrarDolorCabeza from './RegistrarDolorCabeza';
+import RegistrarDificultadRespirar from './RegistrarDificultadRespirar';
 import "../css/menu.css";
-import Ahogo from "./Ahogo";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Menu = () => {
   return (
@@ -18,7 +25,7 @@ const Menu = () => {
           Registra un sintoma
         </div>
         <hr></hr>
-        <a href="#">
+        <Link to="/menu/registrarcongestion">
           <img
             src="./congestion.svg"
             height="33"
@@ -26,8 +33,8 @@ const Menu = () => {
             className="ml-2 mr-4 d-inline-block"
           />
           Congestion
-        </a>
-        <a href="#">
+        </Link>
+        <Link to="/menu/registrardolor">
           <img
             src="./dolor.svg"
             height="33"
@@ -35,9 +42,9 @@ const Menu = () => {
             className="ml-2 mr-4 d-inline-block"
           />
           Dolor
-        </a>
+        </Link>
 
-        <a href="#">
+        <Link to="/menu/registrarfatiga">
           <img
             src="./fatiga.svg"
             height="33"
@@ -45,8 +52,8 @@ const Menu = () => {
             className="ml-2 mr-4 d-inline-block"
           />
           Fatiga
-        </a>
-        <Link to="/menu/ahogo">
+        </Link>
+        <Link to="/menu/registrardificultadrespirar">
           <img
             src="./respirar.svg"
             height="33"
@@ -56,7 +63,7 @@ const Menu = () => {
           Ahogo
         </Link>
 
-        <a href="#">
+        <Link to="/menu/registrarfiebre">
           <img
             src="./fever.png"
             height="33"
@@ -64,8 +71,8 @@ const Menu = () => {
             className="ml-2 mr-4 d-inline-block"
           />
           Fiebre
-        </a>
-        <a href="#">
+        </Link>
+        <Link to="/menu/registrartos">
           <img
             src="./tos.svg"
             height="33"
@@ -73,13 +80,32 @@ const Menu = () => {
             className="ml-2 mr-4 d-inline-block"
           />
           Tos
-        </a>
+        </Link>
       </div>
-      <Route path="/menu/ahogo" exact component={Ahogo}></Route>
+       
+          <Route path="/menu/registrarfiebre" exact component={RegistrarFiebre} />
+          <Route path="/menu/registrarfatiga" exact component={RegistrarFatiga} />
+          <Route path="/menu/registrartos" exact component={RegistrarTos} />
+          <Route path="/menu/registrardolor" exact component={RegistrarDolor} />
+          <Route
+            path="/menu/registrarcongestion"
+            exact
+            component={RegistrarCongestion}
+          />
+          <Route path="/menu/registrardiarrea" exact component={RegistrarDiarrea} />
+          <Route
+            path="/menu/registrardolorcabeza"
+            exact
+            component={RegistrarDolorCabeza}
+          />
+          <Route
+            path="/menu/registrardificultadrespirar"
+            exact
+            component={RegistrarDificultadRespirar}
+          />
+       
     </div>
   );
 };
-
 Menu.propTypes = {};
-
 export default Menu;
