@@ -39,6 +39,7 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "X-Requested-With, X-HTTP-Method-Override, content-Type, Accept, credentials, cache" 
   );
+  
   if ("OPTIONS" == req.method) {
     res.send(200);
   } else {

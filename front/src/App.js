@@ -8,22 +8,21 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Menu from "./components/Menu";
 import RegisterComplete from "./components/RegisterComplete";
 import { Redirect } from "react-router";
+import Ahogo from './components/Ahogo';
 
-const isAuthenticate=()=>{
-  console.log("ISauhusd");
-  fetch("/getUser", { credentials: "include" }).then((res) => {
-    console.log(res);
-    if (res.status == 200) {      
-      return true;
-    } else {
-      return false;
-    }
-  });  
-}
 const MyRouter = (props) => {
-  console.log("asdsi");
-  console.log(isAuthenticate());
-  return true?<Route {...props}></Route>:
+  const isAuthenticate=()=>{    
+    fetch("/getUser", { credentials: "include" }).then((res) => {      
+      if (res.status == 200) {      
+        return true;
+      } else {
+        return false;
+      }
+    });  
+  }
+  const a = isAuthenticate();
+  
+  return true?<Route path="/menu" component={Menu}></Route>:
  <Redirect to="/login"></Redirect>
 };
 function App() {
@@ -35,9 +34,9 @@ function App() {
     <Router>
       <Navbar></Navbar>
       <Route path="/" exact component={BodyHome}></Route>
-      <Route path="/login" exact component={Login}></Route>
-      <Route path="/register" exact component={Register}></Route>
-      <MyRouter path="/menu" component={Menu}></MyRouter>
+      <Route path="/login" exact component={Login}></Route>      
+      <Route path="/register" exact component={Register}></Route>      
+      <MyRouter ></MyRouter>
       <Route
         path="/registerComplete"
         exact

@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link, Route } from "react-router-dom";
 import "../css/menu.css";
+import Ahogo from "./Ahogo";
+
 const Menu = () => {
   return (
     <div>
@@ -33,7 +36,7 @@ const Menu = () => {
           />
           Dolor
         </a>
-       
+
         <a href="#">
           <img
             src="./fatiga.svg"
@@ -43,7 +46,7 @@ const Menu = () => {
           />
           Fatiga
         </a>
-        <a href="#">
+        <Link to="/menu/ahogo">
           <img
             src="./respirar.svg"
             height="33"
@@ -51,8 +54,8 @@ const Menu = () => {
             className="ml-2 mr-4 d-inline-block"
           />
           Ahogo
-        </a>
-      
+        </Link>
+
         <a href="#">
           <img
             src="./fever.png"
@@ -72,9 +75,7 @@ const Menu = () => {
           Tos
         </a>
       </div>
-      <div>
-      
-      </div>
+      <Route path="/menu/ahogo" exact component={Ahogo}></Route>
     </div>
   );
 };
