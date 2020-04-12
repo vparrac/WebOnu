@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('webonu:server');
+var debug = require('debug')('covid:server');
 var http = require('http');
 
 /**
@@ -19,6 +19,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
+ 
 var server = http.createServer(app);
 
 /**

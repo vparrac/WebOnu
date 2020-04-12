@@ -21,47 +21,47 @@ const BodyHome = () => {
         <div className="containerImagenes">
           <div className="row">
             <div className="col">
-              <img src="./fever.png" alt="..." class="img-symtoms"></img>
-              <div class="overlay">
-                <div class="text">Fiebre</div>
+              <img src="./fever.png" alt="..." className="img-symtoms"></img>
+              <div className="overlay">
+                <div className="text">Fiebre</div>
               </div>
             </div>
             <div className="col">
-              <img src="./tos.svg" alt="..." class="img-symtoms"></img>
-              <div class="overlay">
-                <div class="text">Tos</div>
+              <img src="./tos.svg" alt="..." className="img-symtoms"></img>
+              <div className="overlay">
+                <div className="text">Tos</div>
               </div>
             </div>
             <div className="col">
-              <img src="./respirar.svg" alt="..." class="img-symtoms "></img>
-              <div class="overlay">
-                <div class="text">Ahogo</div>
+              <img src="./respirar.svg" alt="..." className="img-symtoms "></img>
+              <div className="overlay">
+                <div className="text">Ahogo</div>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <img src="./dolor.svg" alt="..." class="img-symtoms"></img>
-              <div class="overlay">
-                <div class="text">Dolor</div>
+              <img src="./dolor.svg" alt="..." className="img-symtoms"></img>
+              <div className="overlay">
+                <div className="text">Dolor</div>
               </div>
             </div>
             <div className="col">
-              <img src="./congestion.svg" alt="..." class="img-symtoms"></img>
-              <div class="overlay">
-                <div class="text">Congestion</div>
+              <img src="./congestion.svg" alt="..." className="img-symtoms"></img>
+              <div className="overlay">
+                <div className="text">Congestion</div>
               </div>
             </div>
             <div className="col">
-              <img src="./fatiga.svg" alt="..." class="img-symtoms "></img>
-              <div class="overlay">
-                <div class="text">Fatiga</div>
+              <img src="./fatiga.svg" alt="..." className="img-symtoms "></img>
+              <div className="overlay">
+                <div className="text">Fatiga</div>
               </div>
             </div>
           </div>
         </div>
         Si tienes uno de estos sintomas comienza a registrarlos{' '}
-        <a className="red" href="#">
+        <a className="red" href="/login">
           Aquí
         </a>
       </div>

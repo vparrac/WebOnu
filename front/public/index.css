@@ -33,11 +33,28 @@
 }
 .paragraph {
   font-family: "Roboto", sans-serif;
-  color: 20290e;
+  color: #20290e;
   font-size: 150%;
   padding-left: 12%;
   padding-right: 12%;
   text-align: justify;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  color: #20290e;
+  font-size: 120%;
+  padding: 15px;
+  text-align: center;
+}
+
+.footer h4{
+  font-family: "Roboto", sans-serif;
+  color: #20290e;
+  font-size: 18px;
+  padding-left: 12%;
+  padding-right: 12%;
+  text-align: center;
 }
 
 .footer {
@@ -94,6 +111,38 @@ h1 {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   color: #ff2638;
   border-color: #ff2638;
+}
+
+.footer a{
+  color:#09b3b3;
+}
+
+.card.btnLogin {
+  font-family: "Gotu", sans-serif;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  margin: 10px;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #6fe3e3;
+  border-color: #6fe3e3;
 }
 
 .btnLogin {

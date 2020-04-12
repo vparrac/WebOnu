@@ -1,0 +1,125 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
+.bodyLogin {
+  background-image: url("./img/coronavirus.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+.card {
+  height: 300px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  width: 400px;
+  border-color: black;
+}
+
+.mss {
+  height: 150px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  width: 600px;
+  border-color: black;
+}
+
+.cardR {
+  height: 860px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  width: 700px;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.card-headerLogin {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #6fe3e3;
+  font-family: "Gotu", sans-serif;
+  color: white;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card-header h3 {
+  color: white;
+}
+
+.input-group-prepend span {
+  width: 54px;
+  background-color: #b8ff33;
+  color: black;  
+  border: 0;
+}
+
+form .btnLoginIn {
+  font-family: "Gotu", sans-serif;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  margin: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: black;
+  border-color: #6fe3e3;
+}
+
+form .btnLoginIn:hover {
+  color: #6fe3e3;
+  background-color: white;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
+
+.err{
+  color: #ff2638;
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+
+label{
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  
+}
