@@ -1,24 +1,20 @@
 module.exports = {
-    env: {
-        browser: true
+  env: {
+    browser: true,
+  },
+  extends: ['eslint:recommended', 'prettier', 'plugin:react/recommended'],
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
     },
-    extends: [
-        "eslint:recommended",
-        "prettier",
-        "plugin:react/recommended"
-    ],
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: "module",
-        ecmaFeatures: {
-            jsx: true
-        }
-    },
-    rules: {
-        indent: ["warn", 2, { SwitchCase: 1 }],
-        "linebreak-style": ["error", "unix"],
-        quotes: ["error", "double"],
-        semi: ["error", "always"],
-        "no-console": 0
-    }
+  },
+  rules: {
+    indent: ['warn', 2, { SwitchCase: 1 }],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'double'],
+    semi: ['error', 'always'],
+    'no-console': 0,
+  },
 };
