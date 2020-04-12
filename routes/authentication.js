@@ -22,8 +22,7 @@ router.post("/signup", (req, res, next) => {
     if (user === false) {
       res.statusMessage = info.mensaje;
       res.status(400).end();
-    }
-    else{
+    } else {
       res.statusMessage = "Registro creado con éxito";
       res.status(200).end();
     }
@@ -35,16 +34,29 @@ router.post("/singin", (req, res, next) => {
     if (user === false) {
       res.statusMessage = "Usuario o contraseña incorrectos";
       res.status(400).end();
-    }
-    else{
-      res.statusMessage = "Ingreso éxitoso";
-      res.status(200).end();
+    } else {
+      req.login(user, function (err) {
+        if (err) {
+          return next(err);
+        }
+        console.log("u", req.user);
+        res.statusMessage = "Éxito";
+        res.status(200).end();
+      });
     }
   })(req, res, next);
 });
 
-router.get("/getUser", (req, res) => {
-  return res.json(req.user || null);
+router.get("/getUser", async (req, res) => {
+  const user = await req.user;
+
+  if (req.user) {
+    res.statusMessage = "Éxito";
+    res.status(200).end();
+  } else {
+    res.statusMessage = "Usuario o contraseña incorrectos";
+    res.status(400).end();
+  }
 });
 
 module.exports = router;

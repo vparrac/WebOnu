@@ -3,9 +3,12 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const MongoUtils = require("../db");
 const bcrypt = require("bcrypt-nodejs");
+
 function configurePassport(app) {
   const flash = require("connect-flash");
   app.use(flash());
+  const cookieParser = require("cookie-parser");
+  app.use(cookieParser());
   const bodyParser = require("body-parser");
   app.use(bodyParser.json());
   app.use(
@@ -13,24 +16,30 @@ function configurePassport(app) {
       extended: false,
     })
   );
-
-  app.use(passport.initialize());
-  app.use(passport.session());
   app.use(
     require("express-session")({
       secret: process.env.SECRETKEY,
-      resave: false,
+      resave: true,
+      cookie: {
+        expires: false,        
+      },
       saveUninitialized: false,
     })
   );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 }
 
 passport.serializeUser((user, done) => {
+  console.log("Se serialzia");
   done(null, { id: user[0]._id });
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, getDocById(user.id, "login"));
+passport.deserializeUser(async (user, done) => {
+  console.log("Se deserializa");
+  const usuario = await MongoUtils.getDocById(user.id, "login");
+  done(null, usuario);
 });
 passport.use(
   "local-signup",
@@ -41,31 +50,32 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, username, password, done) => {
-      const userdb = await MongoUtils.getLoginByUsername(username);      
+      const userdb = await MongoUtils.getLoginByUsername(username);
       if (userdb.length >= 1) {
-        return done(
-          null,
-          false,
-          {mensaje:"El correo ingresado ya está en uso"}
-        );
+        return done(null, false, {
+          mensaje: "El correo ingresado ya está en uso",
+        });
       } else {
-        const passwordss = bcrypt.hashSync(password);      
+        const passwordss = bcrypt.hashSync(password);
         const nombre = req.body.nombre;
         const username = req.body.username;
         const genero = req.body.genero;
         const tipoSangre = req.body.tipoSangre;
         const rh = req.body.rh;
-        const nacimiento = req.body.nacimiento;        
-        const edad = req.body.edad;        
-   
-        const usuario={        
-          nombre,username,genero,tipoSangre,rh,nacimiento,edad
+        const nacimiento = req.body.nacimiento;
+        const edad = req.body.edad;
+
+        const usuario = {
+          nombre,
+          username,
+          genero,
+          tipoSangre,
+          rh,
+          nacimiento,
+          edad,
         };
 
-        const usuarioDB = await MongoUtils.insertOneDoc(
-          usuario,
-          "usuarios"
-        );
+        const usuarioDB = await MongoUtils.insertOneDoc(usuario, "usuarios");
 
         if (usuarioDB) {
           const user = await MongoUtils.insertOneDoc(
@@ -74,16 +84,12 @@ passport.use(
           );
           done(null, [
             {
-              username: user.ops[0].email,              
+              username: user.ops[0].email,
               _id: user.ops[0]._id,
             },
           ]);
         } else {
-          return done(
-            null,
-            false,
-            {mensaje:"error"}
-          );
+          return done(null, false, { mensaje: "error" });
         }
       }
     }

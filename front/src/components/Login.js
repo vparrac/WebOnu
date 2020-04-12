@@ -1,22 +1,30 @@
 import React, { useRef, useState } from "react";
-// import PropTypes from 'prop-types';
-import { Redirect } from "react-router";
 import "../css/login.css";
 
-const Login = () => {
+import { Route, Router, Redirect } from "react-router-dom";
+
+const Login = (props) => {
+
+
   const formRef = useRef();
   const [message, setMessage] = useState("");
   const [redirect, setredirect] = useState(false);
+
+  if (redirect) {
+    return <Redirect to="/menu"></Redirect>;
+  }
+
   const onLogin = (evt) => {
     evt.preventDefault();
     const username = formRef.current.username.value;
     const password = formRef.current.username.value;
     const credentials = { username, password };
-    fetch("http://localhost:3001/singin", {
+    fetch("/singin", {
       method: "POST",
       body: JSON.stringify(credentials),
       headers: {
         "Content-Type": "application/json",
+        credentials: "include",
       },
     }).then((a) => {
       console.log("llega front");
@@ -25,14 +33,11 @@ const Login = () => {
         setMessage(a.statusText);
       }
       if (a.status == 200) {
+        console.log("asds");
         setredirect(true);
       }
     });
   };
-
-  if (redirect) {
-    return <Redirect to="/menu" />;
-  }
   return (
     <div>
       <div className="container">

@@ -1,15 +1,13 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const morgan  = require('morgan');
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+const morgan = require("morgan");
 const engine = require("ejs-mate");
-const indexRouter = require('./routes/index');
-const cors = require('cors');
-const configurePassport= require('./passport/passport_config.js');
-const authenticationRouter = require('./routes/authentication')
+const indexRouter = require("./routes/index");
 
-
+const configurePassport = require("./passport/passport_config.js");
+const authenticationRouter = require("./routes/authentication");
 
 const app = express();
 // view engine setup
@@ -17,8 +15,8 @@ app.engine("ejs", engine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "public", "views"));
 
-app.use(morgan('dev'));
-app.use(cors());
+app.use(morgan("dev"));
+
 app.use(express.json());
 
 /**
@@ -27,15 +25,28 @@ app.use(express.json());
  * en false nos indica que no recibiremos archivos pesados como imagenes o documentos
  */
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, "public")));
 
 configurePassport(app);
 
-app.use('/', indexRouter);
-app.use('/', authenticationRouter)
-
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true);
+  
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, X-HTTP-Method-Override, content-Type, Accept, credentials, cache" 
+  );
+  if ("OPTIONS" == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+});
+app.use("/", indexRouter);
+app.use("/", authenticationRouter);
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -52,6 +63,5 @@ app.use('/', authenticationRouter)
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
-
 
 module.exports = app;

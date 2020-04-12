@@ -4,13 +4,13 @@ import "../css/menu.css";
 const Menu = () => {
   return (
     <div>
-      <div class="vertical-menu">
-        <div class="active">
+      <div className="vertical-menu">
+        <div className="active">
           <img
             src="https://res.cloudinary.com/dt9b7pad3/image/upload/v1495403294/Dashboard_kcz278.svg"
             height="32"
             width="40"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Registra un sintoma
         </div>
@@ -20,7 +20,7 @@ const Menu = () => {
             src="./congestion.svg"
             height="33"
             width="40"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Congestion
         </a>
@@ -29,7 +29,7 @@ const Menu = () => {
             src="./dolor.svg"
             height="33"
             width="40"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Dolor
         </a>
@@ -39,7 +39,7 @@ const Menu = () => {
             src="./fatiga.svg"
             height="33"
             width="40"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Fatiga
         </a>
@@ -48,7 +48,7 @@ const Menu = () => {
             src="./respirar.svg"
             height="33"
             width="40"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Ahogo
         </a>
@@ -58,7 +58,7 @@ const Menu = () => {
             src="./fever.png"
             height="33"
             width="35"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Fiebre
         </a>
@@ -67,7 +67,7 @@ const Menu = () => {
             src="./tos.svg"
             height="33"
             width="40"
-            class="ml-2 mr-4 d-inline-block"
+            className="ml-2 mr-4 d-inline-block"
           />
           Tos
         </a>

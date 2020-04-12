@@ -35,6 +35,15 @@ const MongoUtils = () => {
     );
   };
 
+
+  MyMongoLib.getDocById = (id, dbCollection) => {
+    const collection = db.collection(dbCollection);
+    return collection
+      .find({
+        _id: ObjectId(id),
+      })
+      .toArray();
+  };
   MyMongoLib.getLoginByUsername = (username) => {
     const collection = db.collection("login");
     return collection
