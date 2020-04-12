@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const morgan  = require('morgan');
 const engine = require("ejs-mate");
 const indexRouter = require('./routes/index');
+const registrarRouter = require("./routes/registrar")
 const flash = require("connect-flash");
 const session = require("express-session");
 const bodyParser = require("body-parser");
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/registrar', registrarRouter);
 
 
 // // catch 404 and forward to error handler

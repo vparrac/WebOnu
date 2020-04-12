@@ -204,3 +204,25 @@ ol {
   height: 0;
   transition: 0.9s ease;
 }
+
+
+.input-form{
+  border: 1px solid #6fe3e3;
+  font-family: "Roboto", sans-serif;
+}
+
+label{
+  font-family: "Roboto", sans-serif;
+}
+
+span{
+  font-family: "Roboto", sans-serif;
+}
+
+.inline-grid{
+  display: inline-grid;
+}
+
+.gridForm{
+  display: grid;
+}
