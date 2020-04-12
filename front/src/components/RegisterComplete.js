@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 
 const RegisterComplete = () => {
   return (
@@ -20,6 +20,6 @@ const RegisterComplete = () => {
   );
 };
 
-RegisterComplete.propTypes = {};
+
 
 export default RegisterComplete;

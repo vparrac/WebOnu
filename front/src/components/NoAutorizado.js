@@ -8,7 +8,7 @@ const NoAutorizado = () => {
       <div className="ops2">Ingresa para acceder al recurso que buscas</div>
       <hr></hr>
       <div className="row justify-content-center h-100">
-        <img src="./no.png" class="img-fluid j" alt="Responsive image" />>
+        <img src="./no.png" class="img-fluid j" alt="No autorizado" />>
       </div>
     </div>
   );

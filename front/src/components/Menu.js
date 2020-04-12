@@ -1,15 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
-import RegistrarFiebre from "./RegistrarFiebre";
-import RegistrarFatiga from "./RegistrarFatiga";
-import RegistrarTos from "./RegistrarTos";
-import RegistrarDolor from "./RegistrarDolor";
-import RegistrarCongestion from "./RegistrarCongestion";
-import RegistrarDiarrea from "./RegistrarDiarrea";
-import RegistrarDolorCabeza from "./RegistrarDolorCabeza";
-import RegistrarDificultadRespirar from "./RegistrarDificultadRespirar";
+
+
 import "../css/menu.css";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 const Menu = () => {
   return (
@@ -21,6 +14,7 @@ const Menu = () => {
               src="https://res.cloudinary.com/dt9b7pad3/image/upload/v1495403294/Dashboard_kcz278.svg"
               height="32"
               width="40"
+              alt="Dashboard"
               className="ml-2 mr-4 d-inline-block"
             />
             Registra un sintoma
@@ -31,6 +25,7 @@ const Menu = () => {
               src="./congestion.svg"
               height="33"              
               width="40"
+              alt="imagen congestión"
               className="ml-2 mr-4 d-inline-block"
             />
             Congestion
@@ -40,16 +35,17 @@ const Menu = () => {
               src="./dolor.svg"
               height="33"
               width="40"
+              alt="Imagen registrar dolor"
               className="ml-2 mr-4 d-inline-block"
             />
             Dolor
           </Link>
-
           <Link to="/registrarfatiga">
             <img
               src="./fatiga.svg"
               height="33"
               width="40"
+              alt="imagen fatiga"
               className="ml-2 mr-4 d-inline-block"
             />
             Fatiga
@@ -59,6 +55,7 @@ const Menu = () => {
               src="./respirar.svg"
               height="33"
               width="40"
+              alt="imagen de ahogo"
               className="ml-2 mr-4 d-inline-block"
             />
             Ahogo
@@ -69,6 +66,7 @@ const Menu = () => {
               src="./fever.png"
               height="33"
               width="35"
+              alt="imagen fiebre"
               className="ml-2 mr-4 d-inline-block"
             />
             Fiebre
@@ -78,6 +76,7 @@ const Menu = () => {
               src="./tos.svg"
               height="33"
               width="40"
+              alt="imagen tos"
               className="ml-2 mr-4 d-inline-block"
             />
             Tos
@@ -88,6 +87,7 @@ const Menu = () => {
               src="./cabeza.svg"
               height="33"
               width="40"
+              alt="imagen dolor de cabeza"
               className="ml-2 mr-4 d-inline-block"
             />
             Dolor de cabeza
@@ -99,6 +99,7 @@ const Menu = () => {
               src="./cabeza.svg"
               height="33"
               width="40"
+              imagen="imagen diarrea"
               className="ml-2 mr-4 d-inline-block"
             />
             Diarrea
