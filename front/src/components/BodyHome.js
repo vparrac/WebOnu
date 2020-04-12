@@ -61,7 +61,7 @@ const BodyHome = () => {
           </div>
         </div>
         Si tienes uno de estos sintomas comienza a registrarlos{' '}
-        <a className="red" href="#">
+        <a className="red" href="/login">
           Aquí
         </a>
       </div>

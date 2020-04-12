@@ -39,8 +39,10 @@ router.post("/singin", (req, res, next) => {
         if (err) {
           return next(err);
         }
-        console.log("u", req.user);
-        res.statusMessage = "Éxito";
+
+        res.statusMessage = req.user[0]._id;
+        console.log(req.user[0]);
+        res.json({ id: req.user[0]._id });
         res.status(200).end();
       });
     }
@@ -49,14 +51,20 @@ router.post("/singin", (req, res, next) => {
 
 router.get("/getUser", async (req, res) => {
   const user = await req.user;
-
   if (req.user) {
-    res.statusMessage = "Éxito";
+    res.statusMessage = user[0]._id;
+    res.json(user);
     res.status(200).end();
   } else {
-    res.statusMessage = "Usuario o contraseña incorrectos";
+    res.statusMessage = "No hay usuario";
     res.status(400).end();
   }
+});
+
+router.post("/salir", (req, res) => {
+  req.logout();
+  res.statusMessage = "Sesión finalizada con éxito";
+  res.status(200).end();
 });
 
 module.exports = router;

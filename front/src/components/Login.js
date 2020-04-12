@@ -1,20 +1,19 @@
 import React, { useRef, useState } from "react";
 import "../css/login.css";
 
-import { Route, Router, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
 
 
   const formRef = useRef();
   const [message, setMessage] = useState("");
-  const [redirect, setredirect] = useState(false);
+  
 
-  if (redirect) {
-    return <Redirect to="/menu"></Redirect>;
-  }
 
   const onLogin = (evt) => {
+
+  
     evt.preventDefault();
     const username = formRef.current.username.value;
     const password = formRef.current.username.value;
@@ -32,14 +31,17 @@ const Login = (props) => {
       if (a.status === 400) {
         setMessage(a.statusText);
       }
-      if (a.status == 200) {
+      if (a.status === 200) {
         console.log("asds");
-        setredirect(true);
+        
+        console.log("Nu");
+        props.setUser(a.statusText);
       }
     });
   };
   return (
-    <div>
+    <div>{ 
+      props.user==null?(
       <div className="container">
         <div className="d-flex justify-content-center h-100">
           <div className="card">
@@ -84,7 +86,8 @@ const Login = (props) => {
             </div>
           </div>
         </div>
-      </div>
+         
+      </div>):(<Redirect to="/registrarfiebre"></Redirect>)}
     </div>
   );
 };

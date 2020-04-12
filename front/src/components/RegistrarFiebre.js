@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-
-export const RegistrarFiebre = () => {
+import Menu from './Menu';
+import NoAutorizado from './NoAutorizado';
+export const RegistrarFiebre = (props) => {
   const [maxFecha, setMaxFecha] = useState(new Date());
 
   const [temperatura, setTemperatura] = useState(35);
@@ -10,7 +11,7 @@ export const RegistrarFiebre = () => {
   const [horas, setHoras] = useState(0);
   const [tratamiento, setTratamiento] = useState('');
   const [fecha, setCalendarFecha] = useState(new Date());
-
+  console.log(props);
   function handleSubmit(data) {
     const body = {
       temperatura,
@@ -33,7 +34,9 @@ export const RegistrarFiebre = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div>
+    {props.user!==null?( <div className="container-fluid">
+         <Menu></Menu>
       <h1>Registrar fiebre</h1>
       <div className="row justify-content-center h-100">
         <div className="col-lg-10 col-12">
@@ -102,8 +105,11 @@ export const RegistrarFiebre = () => {
           </form>
         </div>
       </div>
+    </div>):(<div><NoAutorizado></NoAutorizado></div>)}
+        
+
     </div>
-  );
+   );
 };
 
 export default RegistrarFiebre;
