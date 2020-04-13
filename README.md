@@ -59,7 +59,7 @@ yarn run client
 Mateo León Alzate & Valerie Parra Cortés
 ## Slides
 
-<a href="https://docs.google.com/presentation/d/1KYO9xu8C0rOEcVoWKdnQq5Lx8_G_dsJhrCf_IHb1qUM/edit?usp=sharing"> Node JS Documentation</a>
+You can find the slides <a href="https://docs.google.com/presentation/d/1KYO9xu8C0rOEcVoWKdnQq5Lx8_G_dsJhrCf_IHb1qUM/edit?usp=sharing"> here</a>
 
 ## License
 The MIT License (MIT)
