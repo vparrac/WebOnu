@@ -38,7 +38,7 @@ const Register = () => {
     } else if (innerDate > now) {
       setmsg("La fecha de nacimiento no puede ser posterior a la fecha actual");
     } else {
-      fetch("http://localhost:3001/signup", {
+      fetch("/signup", {
         method: "POST",
         body: JSON.stringify(usuario),
         headers: {
