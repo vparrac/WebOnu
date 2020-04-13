@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Menu from './Menu';
 import NoAutorizado from "./NoAutorizado";
+import RegistroExitoso from './RegistroExitoso';
 export const RegistrarTos = (props) => {
   const [maxFecha, setMaxFecha] = useState(new Date());
 
@@ -11,14 +12,15 @@ export const RegistrarTos = (props) => {
   const [tratamiento, setTratamiento] = useState("");
   const [fecha, setCalendarFecha] = useState(new Date());
   const [tipo, setTipo] = useState("Seca");
-
+  const [exito, setexito] = useState("");
   function handleSubmit(data) {
     const body = {
-      tipo,
-      minutos,
-      horas,
-      tratamiento,
-      fecha,
+      user:props.user,
+      tipo:tipo,
+      minutos:minutos,
+      horas:horas,
+      tratamiento:tratamiento,
+      fecha:fecha,
     };
     data.preventDefault();
     return fetch("/registrar/RegistrarTos", {
@@ -35,7 +37,8 @@ export const RegistrarTos = (props) => {
 
   return (
     <div>
-      {true?( <div className="container-fluid">
+      {props.user?(
+        exito!=="exito"?( <div className="container-fluid">
       <Menu></Menu>
         <h1>Registrar tos</h1>
         <div className="row justify-content-center h-100">
@@ -104,7 +107,9 @@ export const RegistrarTos = (props) => {
             </form>
           </div>
         </div>
-      </div>):(<div><NoAutorizado></NoAutorizado></div>)}
+      </div>):(<div> <Menu></Menu>
+            <RegistroExitoso></RegistroExitoso></div>)
+        ):(<div><NoAutorizado></NoAutorizado></div>)}
       
      
     </div>

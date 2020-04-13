@@ -1,8 +1,7 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 import "../css/menu.css";
-import { BrowserRouter as Link } from "react-router-dom";
 
 const Menu = () => {
   return (
@@ -23,7 +22,7 @@ const Menu = () => {
           <Link to="/registrarcongestion">
             <img
               src="./congestion.svg"
-              height="33"              
+              height="33"
               width="40"
               alt="imagen congestión"
               className="ml-2 mr-4 d-inline-block"
@@ -92,11 +91,10 @@ const Menu = () => {
             />
             Dolor de cabeza
           </Link>
-          
 
           <Link to="/registrardiarrea">
             <img
-              src="./cabeza.svg"
+              src="./diarrea.svg"
               height="33"
               width="40"
               imagen="imagen diarrea"
@@ -104,9 +102,19 @@ const Menu = () => {
             />
             Diarrea
           </Link>
+
+          <Link to="/medicine">
+            <img
+              src="./medicine.svg"
+              height="33"
+              width="40"
+              imagen="imagen diarrea"
+              className="ml-2 mr-4 d-inline-block"
+            />
+            Medicina
+          </Link>
         </div>
       </div>
-      
     </div>
   );
 };
