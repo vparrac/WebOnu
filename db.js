@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 const { MongoClient, ObjectId } = require('mongodb');
 
 const MongoUtils = () => {
@@ -35,7 +35,6 @@ const MongoUtils = () => {
     );
   };
 
-
   MyMongoLib.getDocById = (id, dbCollection) => {
     const collection = db.collection(dbCollection);
     return collection
@@ -45,11 +44,145 @@ const MongoUtils = () => {
       .toArray();
   };
   MyMongoLib.getLoginByUsername = (username) => {
-    const collection = db.collection("login");
+    const collection = db.collection('login');
     return collection
       .find({
         username: username,
       })
+      .toArray();
+  };
+
+  MyMongoLib.reporte = (fechas, usuario) => {
+    return db
+      .collection('fatiga')
+      .aggregate([
+        {
+          $match: {
+            user: usuario,
+            fecha: { $gte: fechas[0], $lte: fechas[1] },
+          },
+        },
+        {
+          $lookup: {
+            from: 'congestion',
+            let: { user: usuario },
+            as: 'congestion',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'dolor',
+            let: { user: usuario },
+            as: 'dolor',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'dificultadRespirar',
+            let: { user: usuario },
+            as: 'dificultadRespirar',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'fiebre',
+            let: { user: usuario },
+            as: 'fiebre',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'tos',
+            let: { user: usuario },
+            as: 'tos',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'dolorCabeza',
+            let: { user: usuario },
+            as: 'dolorCabeza',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'diarrea',
+            let: { user: usuario },
+            as: 'diarrea',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: 'medicina',
+            let: { user: usuario },
+            as: 'medicina',
+            pipeline: [
+              {
+                $match: {
+                  user: usuario,
+                  fecha: { $gte: fechas[0], $lte: fechas[1] },
+                },
+              },
+            ],
+          },
+        },
+      ])
       .toArray();
   };
 

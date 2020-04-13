@@ -18,6 +18,8 @@ import RegistrarDificultadRespirar from "../components/RegistrarDificultadRespir
 import CerroSesion from "../components/CerroSesion";
 import NoAutorizado from "../components/NoAutorizado";
 import RegistarConsumoMedicina from '../components/RegistarConsumoMedicina';
+import Reporte from '../components/Reporte';
+
 
 
 const Navbar = () => {
@@ -126,6 +128,11 @@ const Navbar = () => {
         path="/registrarfatiga"
         exact
         component={() => <RegistrarFatiga user={user}></RegistrarFatiga>}
+      ></Route>
+       <Route
+        path="/reporte"
+        exact
+        component={() => <Reporte user={user}></Reporte>}
       ></Route>
       <Route
         path="/registrardificultadrespirar"

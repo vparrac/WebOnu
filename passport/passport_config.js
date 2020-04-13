@@ -18,7 +18,7 @@ function configurePassport(app) {
   );
   app.use(
     require("express-session")({
-      secret: process.env.SECRETKEY,
+      secret: process.env.SECRETKEY || "prueba",
       resave: true,
       cookie: {
         expires: false,        

@@ -113,6 +113,17 @@ const Menu = () => {
             />
             Medicina
           </Link>
+
+          <Link to="/reporte">
+            <img
+              src="./hospital.svg"
+              height="33"
+              width="40"
+              imagen="imagen diarrea"
+              className="ml-2 mr-4 d-inline-block"
+            />
+            Reporte
+          </Link>
         </div>
       </div>
     </div>
