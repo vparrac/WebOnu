@@ -203,8 +203,7 @@ const Register = () => {
                   <input
                     name="nacimiento"
                     type="date"
-                    id="nacimiento"
-                    name="nacimiento"
+                    id="nacimiento"                    
                     min="1920-01-01"
                     className="form-control"
                     required

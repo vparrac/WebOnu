@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Menu from "./Menu";
 import NoAutorizado from "./NoAutorizado";
-
+import RegistroExitoso from './RegistroExitoso';
 export const RegistrarDificultadRespirar = (props) => {
   const [maxFecha, setMaxFecha] = useState(new Date());
 
@@ -13,32 +13,33 @@ export const RegistrarDificultadRespirar = (props) => {
   const [fecha, setCalendarFecha] = useState(new Date());
   const [frecuencia, setFrecuencia] = useState(1);
   const [dificultad, setDificultad] = useState(1);
-
+  const [exito, setexito] = useState("");
   function handleSubmit(data) {
     const body = {
-      frecuencia,
-      dificultad,
-      minutos,
-      horas,
-      tratamiento,
-      fecha,
+      user:props.user,
+      frecuencia:frecuencia,
+      dificultad:dificultad,
+      minutos:minutos,
+      horas:horas,
+      tratamiento:tratamiento,
+      fecha:fecha,
     };
     data.preventDefault();
     return fetch("/registrar/RegistrarDificultadRespirar", {
       method: "POST",
-      body: JSON.stringify(body),
-      mode: "cors",
+      body: JSON.stringify(body),      
       headers: {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      console.log(res);
+      setexito("exito");
     });
   }
 
   return (
     <div>
-    {props.user?( <div className="container-fluid">
+    {props.user?(
+      exito!=="exito"?( <div className="container-fluid">
         <Menu></Menu>
         <h1>Registrar dificultad de respirar</h1>
         <div className="row justify-content-center h-100">
@@ -121,7 +122,11 @@ export const RegistrarDificultadRespirar = (props) => {
             </form>
           </div>
         </div>
-      </div>):(<div><NoAutorizado></NoAutorizado></div>)}
+      </div>):(<div>
+            <Menu></Menu>
+            <RegistroExitoso></RegistroExitoso>
+          </div>)
+    ):(<div><NoAutorizado></NoAutorizado></div>)}
      
     </div>
   );

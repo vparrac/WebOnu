@@ -1,18 +1,15 @@
 import React from "react";
 
-const CerroSesion = () => {
+const RegistroExitoso = (props) => {
   return (
     <div className="container">
       <div className="container">
         <div className="d-flex justify-content-center h-100">
           <div className="mss">
-          <br></br>
             <div className="card-headerLogin">
-              <h3>Sesión cerrada con éxito</h3>
+              <h3>Registro creado con éxito</h3>
             </div>
-            <p>
-                Su sesión se cerró con éxito, puede cerrar esta ventana o <a href="/"> volver a la página principal </a>
-            </p>
+            <p>Su sintoma se ha registrado éxitosamente</p>
           </div>
         </div>
       </div>
@@ -20,6 +17,4 @@ const CerroSesion = () => {
   );
 };
 
-
-
-export default CerroSesion;
+export default RegistroExitoso;

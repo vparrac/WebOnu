@@ -16,7 +16,7 @@ const Login = (props) => {
   
     evt.preventDefault();
     const username = formRef.current.username.value;
-    const password = formRef.current.username.value;
+    const password = formRef.current.password.value;
     const credentials = { username, password };
     fetch("/singin", {
       method: "POST",

@@ -31,13 +31,11 @@ function configurePassport(app) {
   app.use(passport.session());
 }
 
-passport.serializeUser((user, done) => {
-  console.log("Se serialzia");
+passport.serializeUser((user, done) => {  
   done(null, { id: user[0]._id });
 });
 
-passport.deserializeUser(async (user, done) => {
-  console.log("Se deserializa");
+passport.deserializeUser(async (user, done) => {  
   const usuario = await MongoUtils.getDocById(user.id, "login");
   done(null, usuario);
 });
@@ -51,12 +49,15 @@ passport.use(
     },
     async (req, username, password, done) => {
       const userdb = await MongoUtils.getLoginByUsername(username);
+      
       if (userdb.length >= 1) {
         return done(null, false, {
           mensaje: "El correo ingresado ya está en uso",
         });
       } else {
-        const passwordss = bcrypt.hashSync(password);
+        const p =password;
+        
+        
         const nombre = req.body.nombre;
         const username = req.body.username;
         const genero = req.body.genero;
@@ -79,7 +80,7 @@ passport.use(
 
         if (usuarioDB) {
           const user = await MongoUtils.insertOneDoc(
-            { username, passwordss },
+            { username, password: p },
             "login"
           );
           done(null, [
@@ -106,17 +107,18 @@ passport.use(
     },
     async (req, username, password, done) => {
       const userdb = await MongoUtils.getLoginByUsername(username);
+
       if (userdb.length < 1) {
         return done(
           null,
           false,
-          req.flash("signinMessage", "Usuario no encontrado")
+          req.flash("signinMessage", "Usuario o contraseña incorrectos")
         );
-      } else if (!bcrypt.hashSync(password) == userdb.password) {
+      } if (password !== userdb[0].password) {
         return done(
           null,
           false,
-          req.flash("signinMessage", "Usuario no encontrado")
+          req.flash("signinMessage", "Usuario o contraseña incorrectos")
         );
       }
       done(null, userdb);

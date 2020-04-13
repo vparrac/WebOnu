@@ -17,8 +17,8 @@ import RegistrarDolorCabeza from "../components/RegistrarDolorCabeza";
 import RegistrarDificultadRespirar from "../components/RegistrarDificultadRespirar";
 import CerroSesion from "../components/CerroSesion";
 import NoAutorizado from "../components/NoAutorizado";
+import RegistarConsumoMedicina from '../components/RegistarConsumoMedicina';
 
-// import PropTypes from 'prop-types';
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -143,6 +143,7 @@ const Navbar = () => {
         component={() => <Login setUser={setUser} user={user}></Login>}
       ></Route>
       <Route path="/register" exact component={Register}></Route>
+      <Route path="/medicine" exact component={()=><RegistarConsumoMedicina user={user}></RegistarConsumoMedicina>}></Route>
       <Route path="/noAutorizado" exact component={NoAutorizado}></Route>
       <Route
         path="/registerComplete"
@@ -153,8 +154,5 @@ const Navbar = () => {
   );
 };
 
-// Navbar.propTypes = {
-
-// };
 
 export default Navbar;
