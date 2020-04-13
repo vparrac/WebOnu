@@ -1,5 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 const BodyHome = () => {
   return (
@@ -61,9 +62,9 @@ const BodyHome = () => {
           </div>
         </div>
         Si tienes uno de estos sintomas comienza a registrarlos{' '}
-        <a className="red" href="/login">
+        <Link className="red" to="/login">
           Aquí
-        </a>
+        </Link>
       </div>
     </div>
   );
