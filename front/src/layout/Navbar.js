@@ -19,7 +19,7 @@ import CerroSesion from "../components/CerroSesion";
 import NoAutorizado from "../components/NoAutorizado";
 import RegistarConsumoMedicina from '../components/RegistarConsumoMedicina';
 import Reporte from '../components/Reporte';
-
+import {Link} from "react-router-dom";
 
 
 const Navbar = () => {
@@ -63,7 +63,7 @@ const Navbar = () => {
     <div className="container-fluid">
       <div>
         <nav className="navbarHome">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img
               src="logo.png"
               width="70"
@@ -71,7 +71,7 @@ const Navbar = () => {
               className="d-inline-block align-top"
               alt="Logo Aplicación"
             ></img>
-          </a>
+          </Link>
           {user === null ? (
             <div className="text-right">
               <Link className="btnLogin" to="/login">

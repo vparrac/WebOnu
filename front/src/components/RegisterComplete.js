@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from "react-router-dom";
 
 const RegisterComplete = () => {
   return (
@@ -11,7 +11,7 @@ const RegisterComplete = () => {
               <h3>Registro creado con éxito</h3>
             </div>
             <p>
-                Su registro fue creado con éxito, ya puede <a href="/login"> ingresar </a>
+                Su registro fue creado con éxito, ya puede <Link to="/login"> ingresar </Link>
             </p>
           </div>
         </div>
