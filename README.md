@@ -58,7 +58,9 @@ yarn run client
 ## Author
 Mateo León Alzate & Valerie Parra Cortés
 ## Slides
-https://docs.google.com/presentation/d/1KYO9xu8C0rOEcVoWKdnQq5Lx8_G_dsJhrCf_IHb1qUM/edit?usp=sharing
+
+You can find the slides ![here](https://docs.google.com/presentation/d/1KYO9xu8C0rOEcVoWKdnQq5Lx8_G_dsJhrCf_IHb1qUM/edit?usp=sharing)
+
 ## License
 The MIT License (MIT)
 
