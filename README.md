@@ -15,6 +15,10 @@ mongod
 ```
 In order to start the database server
 
+## Video
+![Explanation video](https://www.youtube.com/watch?v=ckbztljtAP4&feature=youtu.be)
+
+
 **Important information**
 You need to create three environments variables to this project
 - `DATABASE_URL=<yourDatabaseURL>` where yourDatabaseURL is the direction to your database. ExampleDATABASE_URL=mongodb://localhost/name
