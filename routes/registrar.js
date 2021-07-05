@@ -3,9 +3,21 @@ var router = express.Router();
 
 const mu = require('../db.js');
 
+//I'll fix just one but it applies to all methods below.
+
+/*
+What I would add is exception management that notifies the
+user when exceptions occur. This is done by adding Mongo's
+response to the callback; also, a catch should be set for 
+any exceptions that are generated in the process. This way,
+you will know when the element was not saved in the database 
+correctly.
+*/
 router.post('/RegistrarFatiga', function (req, res, next) {
-  mu.insertOneDoc(req.body, 'fatiga').then(() => {
-    res.json({ exito: 'exito' });
+  mu.insertOneDoc(req.body, 'fatiga').then((resp) => {
+      return res.status(200).json({ exito: 'exito', data: resp });
+  }).catch(err => {
+    return res.json({exito: false, msg: 'error registrando Fatiga', error: err});
   });
 });
 
